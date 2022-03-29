@@ -13,13 +13,7 @@ const resolvers = {
         return userData;
       }
 
-      throw new AuthenticationError("Not logged in");
-    },
-    books: async (parent, args, context) => {
-      if (context.user) {
-        const bookData = await Book.find(args);
-        return bookData;
-      }
+      throw new AuthenticationError("Must be logged in");
     },
   },
   Mutation: {
