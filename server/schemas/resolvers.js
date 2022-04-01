@@ -17,7 +17,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: async (parent, args) => {
+    addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
@@ -27,7 +27,7 @@ const resolvers = {
       if (!user) {
         throw new AuthenticationError("Invalid login credentials");
       }
-      const correctPassword = await User.findOne({ email, password });
+      const correctPassword = await user.isCorrectPassword(password);
       if (!correctPassword) {
         throw new AuthenticationError("Invalid login credentials");
       }
@@ -38,7 +38,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: input } },
+          { $push: { savedBooks: input } },
           { new: true }
         );
         return updatedUser;
