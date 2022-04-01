@@ -1,3 +1,5 @@
+// MongoDB Connection that uses a MongoGB URI to connect to MongoDB Atlas
+
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
