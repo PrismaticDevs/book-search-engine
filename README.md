@@ -24,7 +24,12 @@ This app is live on heroku, no need to install'
 
 ## Usage
 
-Type the book that you want to search for and then the API will find it for you. Create an account to save books.
+Type the book that you want to search for and then the API will find it for you.
+![Search](./img/search.png)
+Create an account.
+![Account](./img/signup.png)
+Log in to your account in order to save books you have searched. You can also remove books from your saved books list.
+![Login](./img/saved.png)
 
 ## Contributors
 
