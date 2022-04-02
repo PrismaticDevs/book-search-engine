@@ -28,8 +28,9 @@ const SignupForm = () => {
     event.preventDefault();
 
     try {
+      alert("test");
       const { data } = await addUser({ variables: { ...userFormData } });
-
+      alert(data);
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
